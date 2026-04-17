@@ -1,0 +1,310 @@
+/* FullAnimeCard.css */
+
+:root {
+    --modal-bg: #1a1a2e;
+    --modal-border: rgba(255, 255, 255, 0.1);
+    --bg-secondary: #121225;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-hover: rgba(255, 255, 255, 0.3);
+    --accent: #ff3131;
+    --accent-dim: rgba(255, 49, 49, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4c3;
+    --text-muted: #71717a;
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-sm: 6px;
+    --transition: 0.2s ease;
+}
+
+.anime-card-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.anime-card-modal {
+    background-color: var(--modal-bg);
+    border: 1px solid var(--modal-border);
+    border-radius: var(--radius-lg);
+    width: clamp(600px, 85vw, 1100px);
+    height: clamp(480px, 80vh, 680px);
+    display: grid;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    transition: all var(--transition);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.anime-left-section {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    overflow: hidden;
+    background: #0d0d1e;
+}
+
+.anime-main-cover {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.anime-main-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.anime-main-cover:hover img {
+    transform: scale(1.03);
+}
+
+.anime-expand-hint {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.4);
+    pointer-events: none;
+    transition: color 0.2s;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.anime-main-cover:hover .anime-expand-hint {
+    color: rgba(255,255,255,0.9);
+}
+
+.anime-strip-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 0 5px;
+}
+
+.anime-strip-arrow {
+    width: 30px;
+    height: 60px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.anime-strip-arrow:hover {
+    color: var(--accent);
+    background: rgba(255,255,255,0.05);
+}
+
+.anime-image-strip {
+    display: flex;
+    gap: 8px;
+    padding: 10px 5px;
+    overflow-x: auto;
+    flex: 1;
+    scrollbar-width: thin;
+}
+
+.anime-strip-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s;
+}
+
+.anime-strip-thumb:hover, .anime-strip-thumb.active {
+    opacity: 1;
+    border-color: var(--accent);
+}
+
+.anime-center-section {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.anime-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.anime-synopsis {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.anime-action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+}
+
+.anime-action-btn {
+    padding: 12px 24px;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.anime-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--accent-dim);
+    filter: brightness(1.1);
+}
+
+.anime-right-section {
+    border-left: 1px solid var(--border-color);
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.anime-right-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.anime-chapter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.anime-chapter-item:hover, .anime-chapter-item.active {
+    background: rgba(255,255,255,0.05);
+}
+
+.anime-chapter-item.active {
+    border: 1px solid var(--accent-dim);
+}
+
+.anime-chapter-thumb {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.anime-chapter-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.anime-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+/* Lightbox */
+.anime-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+.anime-lightbox-frame {
+    max-width: 90vw;
+    max-height: 90vh;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.anime-lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: block;
+}
+
+.anime-lightbox-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 60px 30px 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: #fff;
+}
+
+.anime-lightbox-close {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+}
