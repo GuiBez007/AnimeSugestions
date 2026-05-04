@@ -3,7 +3,7 @@ import { DEFAULT_ICONS, DEFAULT_LABELS, PT_LABELS, CATEGORY_FILTERS } from './da
 import { FullAnimeCard } from './FullAnimeCard.js';
 
 let currentCategory = CATEGORIES.find(c => c.id === 'anime') || { id: 'anime', name: 'Recomendação de Animes', color: '#ff3131', shadow: 'rgba(255, 49, 49, 0.2)' };
-let currentFilter = 'all';
+let currentFilters = ['all'];
 const showColoredBorders = true;
 const isStaggeredMode = true;
 let currentLanguage = 'pt';
@@ -28,12 +28,25 @@ function getStatusLabel(status) {
 }
 
 function getFilterKeys(categoryId) {
-    return CATEGORY_FILTERS[categoryId] || ['all', 'seen', 'to-watch', 'hyped'];
+    return CATEGORY_FILTERS[categoryId] || ['all', 'watched', 'to-watch', 'hyped', 'favorite'];
 }
 
 
 // Initialize
 function init() {
+    const savedData = JSON.parse(localStorage.getItem('animeSuggestionsData') || '{}');
+    if (MEDIA_DATA && MEDIA_DATA.anime) {
+        MEDIA_DATA.anime.forEach(item => {
+            if (savedData[item.title]) {
+                if (savedData[item.title].favorite !== undefined) {
+                    item.favorite = savedData[item.title].favorite;
+                }
+                if (savedData[item.title].status !== undefined) {
+                    item.status = savedData[item.title].status;
+                }
+            }
+        });
+    }
     render();
 }
 
@@ -69,7 +82,7 @@ function renderMediaCard(item) {
     card.style.setProperty('--card-accent', currentCategory.color);
     card.style.setProperty('--card-accent-faint', currentCategory.shadow);
     card.onclick = () => {
-        const fullCard = new FullAnimeCard(item);
+        const fullCard = new FullAnimeCard(item, currentLanguage);
         fullCard.render();
     };
 
@@ -101,9 +114,9 @@ function renderDetailView() {
 
     // Global Status Filtering (applies across all groups)
     const filteredItems = allItems.filter(item => {
-        if (currentFilter === 'all') return true;
-        if (currentFilter === 'favorite') return item.favorite;
-        return item.status === currentFilter;
+        if (currentFilters.includes('all')) return true;
+        if (currentFilters.includes('favorite')) return item.favorite;
+        return currentFilters.includes(item.status);
     });
 
     const filterKeys = getFilterKeys('anime');
@@ -132,7 +145,7 @@ function renderDetailView() {
                         <button class="lang-toggle-btn" id="lang-toggle">
                             ${currentLanguage === 'en' ? 'Language: 🇺🇸 EN' : 'Idioma: 🇧🇷 PT'}
                         </button>
-                        <button class="filter-btn ${currentFilter === 'favorite' ? 'active' : ''}" id="favorite-toggle" data-filter="favorite">
+                        <button class="filter-btn ${currentFilters.includes('favorite') ? 'active' : ''}" id="favorite-toggle" data-filter="favorite">
                             ⭐ ${currentLanguage === 'en' ? 'Favorites' : 'Favoritos'}
                             <span class="filter-count" style="margin-left: 5px;">${counts['favorite']}</span>
                         </button>
@@ -143,12 +156,12 @@ function renderDetailView() {
                 </header>
 
                 <div class="filter-bar">
-                    <button class="filter-btn ${currentFilter === 'all' ? 'active' : ''}" data-filter="all">
+                    <button class="filter-btn ${currentFilters.includes('all') ? 'active' : ''}" data-filter="all">
                         ${getStatusIcon('all')} ${getStatusLabel('all')}
                         <span class="filter-count">${counts['all']}</span>
                     </button>
                     ${filterKeys.filter(k => k !== 'favorite' && k !== 'all').map(key => `
-                        <button class="filter-btn ${currentFilter === key ? 'active' : ''}" data-filter="${key}">
+                        <button class="filter-btn ${currentFilters.includes(key) ? 'active' : ''}" data-filter="${key}">
                             ${getStatusIcon(key)} ${getStatusLabel(key)}
                             <span class="filter-count">${counts[key]}</span>
                         </button>
@@ -212,7 +225,19 @@ function renderDetailView() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const newFilter = btn.getAttribute('data-filter');
-            currentFilter = (currentFilter === newFilter) ? 'all' : newFilter;
+            if (newFilter === 'all' || newFilter === 'favorite') {
+                currentFilters = [newFilter];
+            } else {
+                currentFilters = currentFilters.filter(f => f !== 'all' && f !== 'favorite');
+                if (currentFilters.includes(newFilter)) {
+                    currentFilters = currentFilters.filter(f => f !== newFilter);
+                } else {
+                    currentFilters.push(newFilter);
+                }
+                if (currentFilters.length === 0) {
+                    currentFilters = ['all'];
+                }
+            }
             render();
         });
     });

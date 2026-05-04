@@ -1,0 +1,65 @@
+export const guilherme = [
+  {
+    title: 'final space',
+    synopsis: `An astronaut named Gary and his planet-destroying sidekick called Mooncake embark on serialized journeys through space in order to unlock the mystery of where the universe actually ends and if it actually does exist.`,
+    synopsisPT: `Um astronauta chamado Gary e seu ajudante destruidor de planetas chamado Mooncake embarcam em jornadas serializadas pelo espaço para desvendar o mistério de onde o universo realmente termina e se ele realmente existe.`,
+    notes: `Excelente anime, recomendo assistir!`,
+    url: 'https://www.imdb.com/title/tt7451256/',
+    thumb: 'https://m.media-amazon.com/images/I/915VP-cPMHL._AC_UF1000,1000_QL80_.jpg',
+    video: 'https://www.youtube.com/watch?v=49p68Zf3e9A',
+    imgs: {
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+      4: '',
+    },
+    favorite: false,
+    status: 'to-watch',
+    arcs: 3,
+    episodesPerArc: 12,
+    animeStatus: 'finalizado'
+  },
+  {
+    title: 'gravity falls',
+    synopsis: `Twin siblings Dipper and Mabel Pines spend the summer at their great-uncle's tourist trap in the enigmatic town of Gravity Falls, Oregon.`,
+    synopsisPT: `Os irmãos gêmeos Dipper e Mabel Pines passam o verão na armadilha para turistas de seu tio-avô na enigmática cidade de Gravity Falls, Oregon.`,
+    notes: `Excelente anime, recomendo assistir!`,
+    url: 'https://www.imdb.com/title/tt1865718/',
+    thumb: 'https://m.media-amazon.com/images/S/pv-target-images/0d338c4e0a70a5b278d12a7c5b1f8d06df01d0b80d6e334573438f2aa9cf3c32.jpg',
+    video: 'https://www.youtube.com/watch?v=X2DUpDxFJyg',
+    imgs: {
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+      4: '',
+    },
+    favorite: false,
+    status: 'to-watch',
+    arcs: 2,
+    episodesPerArc: 20,
+    animeStatus: 'finalizado'
+  },
+  {
+    title: 'samurai 7',
+    synopsis: `In a futuristic world that has just witnessed the end of a massive war, a village of farmers hires seven samurai to protect them from a group of noble-bandits.`,
+    synopsisPT: `Em um mundo futurista que acabou de presenciar o fim de uma guerra massiva, uma vila de camponeses contrata sete samurais para protegê-los de um grupo de nobres bandidos.`,
+    notes: `Excelente anime, recomendo assistir!`,
+    url: 'https://www.imdb.com/title/tt0413645/',
+    thumb: 'https://www.vigilianerd.com.br/wp-content/uploads/2019/06/Samurai-7-netflix-vigilia-nerd.jpg',
+    video: 'https://www.youtube.com/watch?v=8p_hL_7tXpU',
+    imgs: {
+      0: '',
+      1: '',
+      2: '',
+      3: '',
+      4: '',
+    },
+    favorite: false,
+    status: 'to-watch',
+    arcs: 1,
+    episodesPerArc: 26,
+    animeStatus: 'finalizado'
+  }
+];
