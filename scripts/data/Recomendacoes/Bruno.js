@@ -1,4 +1,24 @@
 export const bruno = [
+{
+    title: 'How Heavy Are the Dumbbells You Lift?',
+    synopsis: `Hibiki Sakura, a high school girl who loves to eat, notices her waistline expanding. Desperate to lose weight, she decides to join the Silverman Gym. There, she meets her school's student council president, Akemi Souryuuin, who has a severe muscle fetish. Together, guided by the overly handsome trainer Machio Naruzo, they embark on a journey into the world of intense weight training and fitness.`,
+    synopsisPT: `Hibiki Sakura, uma estudante que ama comer, percebe que sua cintura está aumentando. Desesperada para emagrecer, ela decide se matricular na Academia Silverman. Lá, ela encontra a presidente do conselho estudantil de sua escola, Akemi Souryuuin, que tem um fetiche extremo por músculos. Juntas, guiadas pelo instrutor excessivamente atraente Machio Naruzo, elas embarcam em uma jornada no mundo da musculação e do fitness.`,
+    notes: `Excelente anime de comédia e esporte, ótimo para dar boas risadas e aprender técnicas reais de treino!`,
+    url: 'https://www.imdb.com/title/tt10362632/?ref_=fn_t_1',
+    thumb: 'https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/1467805aa698309df8fa4a9e4fad0ada.jpg',
+    video: 'https://www.youtube.com/watch?v=ULjbIMvP6A0',
+    imgs: {
+      0: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4WFaVbIwWwiBgGcw1rmZF-IO6b0sE3uwVPg&s',
+      1: 'https://www.intoxianime.com/wp-content/uploads/2019/08/dumbbell-nan-kilo-moteru-episodio-7.jpg',
+      2: 'https://a.storyblok.com/f/178900/1280x720/d30ccd2ae7/f63f41155466b7c86342d8933d4b088a1612956989_main.jpg/m/filters:quality(95)format(webp)',
+      4: 'https://i.pinimg.com/1200x/63/32/93/633293c26580b9e84b37124c69f125b1.jpg',
+    },
+    favorite: false,
+    status: 'to-watch',
+    arcs: 1, // O anime possui apenas 1 temporada
+    episodesPerArc: 12, // Composta por 12 episódios
+    animeStatus: 'finalizado' // A temporada de anime foi concluída
+  },
   {
     title: 'arcane',
     synopsis: `Set in the utopian region of Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League of Legends champions-and the power that will tear them apart.`,
